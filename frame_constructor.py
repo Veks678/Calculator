@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter as tk
 
 
-class Frames():
+class Frames:
     List_frames = []
 
     def __init__(self, windows_line, bg_line, width_line):
@@ -29,6 +29,7 @@ class Frames():
                               height = self.height_line)
             self.List_frames.append(name_line)
 
-            for line in self.List_frames:
-                line.pack()
-                line.pack_propagate(False)
+    def run_frame(self):
+        for line in self.List_frames:
+            line.pack()
+            line.pack_propagate(False)

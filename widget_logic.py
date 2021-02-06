@@ -3,7 +3,7 @@ import tkinter as tk
 
 from field_constructor import Creating_fields
 
-class Buttons_logic():
+class Buttons_logic:
     def __init__(self, widget_label):
         self.widget_label = widget_label
         self.Expression = Creating_fields.field_list[0]

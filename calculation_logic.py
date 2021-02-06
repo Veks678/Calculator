@@ -3,7 +3,7 @@ import tkinter as tk
 
 from field_constructor import Creating_fields
 
-class Calculation_logic():
+class Calculation_logic:
     def __init__(self):
         self.Expression = Creating_fields.field_list[0]
         self.Decision = Creating_fields.field_list[1]
@@ -30,30 +30,27 @@ class Calculation_logic():
 
         while long_Expression_str > 0:
             long_Expression_str = long_Expression_str - 1
-            index.insert(0,long_Expression_str)
+            index.insert(0, long_Expression_str)
 
         Expression_list = [self.Expression_str[i] for i in index]
-        print(Expression_list)
 
         for i, a in enumerate(Expression_list):
             if Expression_list[0] in '-':
-                Expression_list.insert(i, (''.join(Expression_list[i: i + 2])))
+                Expression_list.insert(i, (''.join(Expression_list[i:i+2])))
                 del Expression_list[i + 1: i + 3]
 
             elif Expression_list[i] in '-' \
                  and Expression_list[i - 1] in ('-','+','*','/'):
-                Expression_list.insert(i,(''.join(Expression_list[i: i + 2])))
+                Expression_list.insert(i,(''.join(Expression_list[i:i+2])))
                 del Expression_list[i + 1: i + 3]
 
         Expressions_concatenated = []
 
         for number in Expression_list.copy():
-
-            index = Expression_list.index(number)
-
+            i = Expression_list.index(number)
             if number in ("+", "-", "*", "/"):
-                Expressions_concatenated.append(''.join(Expression_list[0:index]))
-                del Expression_list[0:index]
+                Expressions_concatenated.append(''.join(Expression_list[0:i]))
+                del Expression_list[0:i]
                 Expressions_concatenated.append(Expression_list[0])
                 del Expression_list[0]
 
@@ -72,10 +69,9 @@ class Calculation_logic():
             print('\nОшибка! Арифметическое действие не найдено')
             return
         if self.Expression_str[-1:] in ("+" ,"-" ,"*" ,"/"):
-            print('\nОшибка! Не найдено числа после арифметического знака!\n')
+            print('\nОшибка! Нет числа после арифметического знака!\n')
             return
 
-        print(Expressions_concatenated)
         for symbol in Expressions_concatenated.copy():
             if symbol in ('+','-','*','/'):
                 num1 = ''.join(Expressions_concatenated[0:1])

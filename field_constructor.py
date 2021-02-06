@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter as tk
 
 
-class Creating_fields():
+class Creating_fields:
     field_list = []
 
     def __init__(self, frame_fields, bg_fields, fg_fields, font_fields, \
@@ -24,17 +24,20 @@ class Creating_fields():
                 event.char.isdigit() == False:
                 return "break"
 
-        Field = self.fields_type(self.frame_fields, \
-                                 bg = self.bg_fields, fg = self.fg_fields, \
-                                 font = self.font_fields, \
-                                 width = self.wight_fields)
+        self.Field = self.fields_type(self.frame_fields, \
+                                      bg = self.bg_fields,
+                                      fg = self.fg_fields, \
+                                      font = self.font_fields, \
+                                      width = self.wight_fields)
 
-        Field.bind("<Key>", check_keys)
-        Field.pack(padx = self.padx_buttons, \
-                   pady = self.pady_buttons, \
-                   side = LEFT, fill = Y)
+        self.Field.bind("<Key>", check_keys)
+
+    def run_widgets(self):
+        self.Field.pack(padx = self.padx_buttons, \
+                        pady = self.pady_buttons, \
+                        side = LEFT, fill = Y)
 
         if len(self.field_list) > 1:
             del self.field_list[:]
         else:
-            self.field_list.append(Field)
+            self.field_list.append(self.Field)
