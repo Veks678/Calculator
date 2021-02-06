@@ -6,6 +6,8 @@ from field_constructor import Creating_fields
 from calculation_logic import Calculation_logic
 
 class Creating_buttons:
+    Pixel_Virtual = tk.PhotoImage(width = 1)
+
     def __init__(self, frame_buttons, bg_buttons, fg_buttons, font_buttons, \
                  width_buttons, padx_buttons, pady_buttons, buttons_type, \
                  buttons_label):
@@ -25,18 +27,21 @@ class Creating_buttons:
             self.bg_buttons = "#555"
         elif self.buttons_label in '.':
             self.buttons_side = RIGHT
-            self.width_buttons = 3
+            self.width_buttons = 40
         elif self.buttons_label in '=':
             self.buttons_side = LEFT
+        elif self.buttons_label not in ('←','C'):
+            self.width_buttons = 40
 
         self.Reusable_button = self.buttons_type(self.frame_buttons,
                                               text = self.buttons_label,
-                                              bg = self.bg_buttons, \
+                                              bg = self.bg_buttons,
                                               fg = self.fg_buttons,
                                               font = self.font_buttons,
                                               width = self.width_buttons,
-                            command = Command_buttons(self.buttons_label\
-                                                      ).Command)
+                                              image = self.Pixel_Virtual,
+                                              compound = 'c',
+                   command = Command_buttons(self.buttons_label).Command)
 
 
     def run_widgets(self):

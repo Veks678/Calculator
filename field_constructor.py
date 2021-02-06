@@ -20,14 +20,17 @@ class Creating_fields:
 
     def create_widgets(self):
         def check_keys(event):
-            if (event.state & 4 and event.keysym == "v") or \
-                event.char.isdigit() == False:
-                return "break"
+            if self.fields_label in 'Decision':
+                if event.char:
+                    return "break"
+                elif (event.state & 4 and event.keysym == "v") or \
+                      event.char.isdigit() == False:
+                    return "break"
 
-        self.Field = self.fields_type(self.frame_fields, \
+        self.Field = self.fields_type(self.frame_fields,
                                       bg = self.bg_fields,
-                                      fg = self.fg_fields, \
-                                      font = self.font_fields, \
+                                      fg = self.fg_fields,
+                                      font = self.font_fields,
                                       width = self.wight_fields)
 
         self.Field.bind("<Key>", check_keys)

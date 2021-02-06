@@ -11,8 +11,9 @@ class Frames:
         self.width_line = width_line
 
         self.List_name_frames = ['Expression_line', 'Decision_line', \
-                                 'First_line', 'Second_line', 'Third_line', \
-                                 'Fourth_line', 'Fifth_line']
+                                 'First_line', 'Second_line', \
+                                 'Third_line', 'Fourth_line', \
+                                 'Fifth_line']
 
     def create_frame(self):
         for name_line in self.List_name_frames:
@@ -23,8 +24,8 @@ class Frames:
             else:
                 self.height_line = 45
 
-            name_line = Frame(self.windows_line, \
-                              background = self.bg_line, \
+            name_line = Frame(self.windows_line,
+                              background = self.bg_line,
                               width = self.width_line,
                               height = self.height_line)
             self.List_frames.append(name_line)
