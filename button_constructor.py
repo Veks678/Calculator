@@ -27,11 +27,11 @@ class Creating_buttons:
             self.bg_buttons = "#555"
         elif self.buttons_label in '.':
             self.buttons_side = RIGHT
-            self.width_buttons = 40
+            self.width_buttons = 36
         elif self.buttons_label in '=':
             self.buttons_side = LEFT
         elif self.buttons_label not in ('←','C'):
-            self.width_buttons = 40
+            self.width_buttons = 36
 
         self.Reusable_button = self.buttons_type(self.frame_buttons,
                                               text = self.buttons_label,
@@ -48,7 +48,6 @@ class Creating_buttons:
         self.Reusable_button.pack(side = self.buttons_side , \
                                   padx = self.padx_buttons , \
                                   pady = self.pady_buttons)
-
 
 
 class Command_buttons:

@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
 
-from calculator_param import Param_widgets, Param_window, Param_frames
+from interface_parameters import Param_widgets, Param_window, Param_frames
 
 class main:
     label_widgets_list = ['Expression','Decision','7','8','9','+','4', \
