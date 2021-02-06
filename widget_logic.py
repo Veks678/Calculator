@@ -60,7 +60,7 @@ class Buttons_logic():
                 print('\nОшибка! Число не найдено')
                 return
             if '-' in self.Decision.get() \
-                   and self.Expression.get().isdigit() == False\
+                   and self.Expression.get(1.0, END).isdigit() == False\
                    and Decision_str[-1:].isdigit() == True:
                 self.Expression.insert(END, '(' + Decision_str + ')')
                 self.Expression.insert(END, ' ' + arithmetic_symbol + ' ')
