@@ -9,43 +9,35 @@ class Calculation_logic:
         self.Decision = Creating_fields.field_list[1]
 
     def Input_processing(self):
-        self.Expression_str = self.Expression.get("1.0", END)
-        self.Expression.insert(END, self.Decision.get())
-
-        self.Expression_str = self.Expression_str.replace(' ', '')
-        self.Expression_str = self.Expression_str.replace('(', '')
-        self.Expression_str = self.Expression_str.replace(')', '')
-        self.Expression_str = self.Expression_str[0:-1]
-
-        long_Expression_str = len(self.Expression_str)
-
-        if long_Expression_str == 0:
+        if (len(self.Expression.get("1.0", END)) - 1)  == 0:
             print('\nОшибка! Невозможно вычислить, поле пусто\n')
-            return
-        if set(["+" , '-', "*" ,"/"]).isdisjoint(self.Expression_str) == True:
-            print('\nОшибка! Не найденно арифметическое действие!\n')
-            return
+            return None
+        elif self.Expression.get("1.0", END).isdigit():
+            print('\nОшибка! Нет арифметического знака!\n')
+            return None
 
-        index = []
+        self.Expression.insert(END, self.Decision.get())
+        self.Expression_str = self.Expression.get("1.0", END)
 
-        while long_Expression_str > 0:
-            long_Expression_str = long_Expression_str - 1
-            index.insert(0, long_Expression_str)
+        for symbol in self.Expression_str:
+            if symbol in (' ', '\n', '(', ')'):
+                self.Expression_str = self.Expression_str.replace(symbol,'')
 
-        Expression_list = [self.Expression_str[i] for i in index]
+        if self.Expression_str[-1:] in ("+" ,"-" ,"*" ,"/"):
+            print('\nОшибка! Нет числа после арифметического знака!\n')
+            self.Expression.delete('end-2c')
+            return None
 
-        for i, a in enumerate(Expression_list):
-            if Expression_list[0] in '-':
+        Expression_list = [self.Expression_str[i] \
+                           for i,s in enumerate(self.Expression_str)]
+
+        for i, s in enumerate(Expression_list):
+            if (not Expression_list[i-1].isdigit() and s in '-') or\
+               Expression_list[0] in '-':
                 Expression_list.insert(i, (''.join(Expression_list[i:i+2])))
-                del Expression_list[i + 1: i + 3]
-
-            elif Expression_list[i] in '-' \
-                 and Expression_list[i - 1] in ('-','+','*','/'):
-                Expression_list.insert(i,(''.join(Expression_list[i:i+2])))
-                del Expression_list[i + 1: i + 3]
+                del Expression_list[i+1: i+3]
 
         Expressions_concatenated = []
-
         for number in Expression_list.copy():
             i = Expression_list.index(number)
             if number in ("+", "-", "*", "/"):
@@ -60,16 +52,9 @@ class Calculation_logic:
         return Expressions_concatenated
 
     def Processing_computation(self):
-        self.Expression.insert(END, self.Decision.get())
-        self.Expression_str = self.Expression.get("1.0", END)
-
         Expressions_concatenated = Calculation_logic().Input_processing()
 
-        if len(self.Expression.get("1.0", END)) == 1:
-            print('\nОшибка! Арифметическое действие не найдено')
-            return
-        if self.Expression_str[-1:] in ("+" ,"-" ,"*" ,"/"):
-            print('\nОшибка! Нет числа после арифметического знака!\n')
+        if Expressions_concatenated == None:
             return
 
         for symbol in Expressions_concatenated.copy():
