@@ -16,7 +16,6 @@ class Frames:
                                  background = self.__bg_line,
                                  width = self.__width_line,
                                  height = self.__height_line)
-
         return self.__name_line
 
     def run_frame(self):
