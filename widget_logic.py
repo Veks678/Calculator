@@ -70,7 +70,7 @@ class Buttons_logic:
                 self.Expression.insert(END, ' ' + arithmetic_symbol + ' ')
                 self.Decision.delete(0, END)
 
-    def distribute(self):
+    def distribute_widgets(self):
         if ([s for s in self.widget_label if s in ('1234567890')]):
             self.check_number(self.widget_label, self.Decision.get())
 

@@ -56,6 +56,6 @@ class Command_buttons:
 
     def Command(self):
         if self.__buttons_label not in ('='):
-            Buttons_logic(self.__buttons_label).distribute()
+            Buttons_logic(self.__buttons_label).distribute_widgets()
         else:
             Calculation_logic().Processing_computation()
