@@ -48,7 +48,7 @@ class Creating_buttons:
         self.__Reusable_button.pack(side = self.__buttons_side , \
                                     padx = self.__padx_buttons , \
                                     pady = self.__pady_buttons, \
-                                    expand = True)
+                                    expand = True, fill = BOTH)
 
 
 class Command_buttons:
