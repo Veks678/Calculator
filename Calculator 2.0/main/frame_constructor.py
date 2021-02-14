@@ -19,5 +19,5 @@ class Frames:
         return self.__name_line
 
     def run_frame(self):
-        self.__name_line.pack()
+        self.__name_line.pack(expand = True)
         self.__name_line.pack_propagate(False)

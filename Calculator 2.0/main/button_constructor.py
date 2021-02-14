@@ -47,7 +47,8 @@ class Creating_buttons:
     def run_widgets(self):
         self.__Reusable_button.pack(side = self.__buttons_side , \
                                     padx = self.__padx_buttons , \
-                                    pady = self.__pady_buttons)
+                                    pady = self.__pady_buttons, \
+                                    expand = True)
 
 
 class Command_buttons:

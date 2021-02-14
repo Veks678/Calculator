@@ -37,8 +37,8 @@ class Creating_fields:
 
     def run_widgets(self):
         self.__Field.pack(padx = self.__padx_buttons, \
-                        pady = self.__pady_buttons, \
-                        side = LEFT, fill = Y)
+                          pady = self.__pady_buttons, \
+                          side = LEFT, fill = Y, expand = True)
 
         if len(self.field_list) > 1:
             del self.field_list[:]
