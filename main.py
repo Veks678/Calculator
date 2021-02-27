@@ -16,13 +16,13 @@ class main:
         for label_line in range(7):
             self.__list_frames.append(Param_frames(label_line).call_frame())
 
-        for label_line in range(19):
-            if label_line in (1,2,6,10,14,18):
-                self.__index_frame += 1
-
+        for label_line in range(20):
             Param_widgets(self.__label_widgets_list[label_line], \
                           self.__list_frames[self.__index_frame]\
                           ).call_widgets()
+
+            if label_line in (0,1,5,9,13,17,19):
+                self.__index_frame += 1
 
         self.__object_windows.call_window()
 
