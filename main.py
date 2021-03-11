@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
 
-from interface_parameters import Param_widgets, Param_window, Param_frames
+from data.interface_parameters import Param_widgets, Param_window, Param_frames
 
 class main:
     def __init__(self):
