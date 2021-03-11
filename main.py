@@ -1,10 +1,15 @@
 from tkinter import *
 import tkinter as tk
 
+from win32api import LoadKeyboardLayout, GetKeyboardLayout
+
 from data.interface_parameters import Param_widgets, Param_window, Param_frames
 
 class main:
     def __init__(self):
+        if GetKeyboardLayout() == 68748313:
+            LoadKeyboardLayout("00000409", 1)
+
         self.__label_widgets_list = ['Expression','Decision','7','8','9',\
                                      '+','4','5','6','-','1','2','3','*',\
                                      '←','0','C','/','=','.']
