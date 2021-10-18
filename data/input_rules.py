@@ -5,8 +5,7 @@ from calculation import Calculation_logic
 
 class Rules:
     def __init__(self, widget_label, field_list):
-        self.widget_label = widget_label
-        self.field_list = field_list
+        self.widget_label, self.field_list = widget_label, field_list
         self.Expression = self.field_list[0]
         self.Decision = self.field_list[1]
 
@@ -35,7 +34,7 @@ class Rules:
     def check_symbol(self, special_symbol, Decision_str):
         if special_symbol in 'C':
             self.Expression.delete("1.0", END)
-            self.Decision.delete("1.0",'end-1c')
+            self.Decision.delete("1.0", END)
 
         elif special_symbol in '←':
             self.Decision.delete('end-2c')

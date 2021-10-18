@@ -8,19 +8,15 @@ class Calculation_logic:
     def Input_processing(self):
         if (len(self.Expression.get("1.0", 'end-1c'))) == 0:
             return None
-        elif self.Expression.get("1.0", 'end-1c').isdigit():
-            return None
 
         self.Expression.insert(END, self.Decision.get("1.0",'end-1c'))
-        self.Expression_str = self.Expression.get("1.0", END)
-
-        for symbol in self.Expression_str:
-            if symbol in (' ', '\n', '(', ')'):
-                self.Expression_str = self.Expression_str.replace(symbol,'')
-
-        if self.Expression_str[-1:] in ("+" ,"-" ,"*" ,"/"):
-            self.Expression.delete('end-2c')
-            return None
+        self.Expression_str = self.Expression.get("1.0", 'end-1c')
+        
+        if self.Expression_str[-2] in ("+" ,"-" ,"*" ,"/"):
+            return None        
+        
+        for symbol in (' ','(',')'):
+            self.Expression_str = self.Expression_str.replace(symbol,'')
 
         Expression_list = [self.Expression_str[i] \
                            for i,s in enumerate(self.Expression_str)]
