@@ -1,0 +1,7 @@
+from tkinter import *
+import tkinter as tk
+
+from gui import run_gui
+
+if __name__ == '__main__':
+    run_gui()
